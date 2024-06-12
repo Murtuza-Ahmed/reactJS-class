@@ -2,6 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query"; //  useQuery jis ki madad se API call hoga
 import ftechPet from "./fetchPet"; //  yaha se API call hoga
+import Carousel from "./Carousel";
 
 const Detail = () => {
   const { id } = useParams();
@@ -20,6 +21,7 @@ const Detail = () => {
   return (
     <>
       <div className="details">
+        <Carousel images={pet.images} />
         <div>
           <h1>{pet.name}</h1>
           <h2>{`${pet.animal} — ${pet.breed} — ${pet.city}, ${pet.state}`}</h2>
