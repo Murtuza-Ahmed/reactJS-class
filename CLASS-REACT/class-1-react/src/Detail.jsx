@@ -1,11 +1,12 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
-import ftechPet from "./fetchPet";
+import { useQuery } from "@tanstack/react-query"; //  useQuery jis ki madad se API call hoga
+import ftechPet from "./fetchPet"; //  yaha se API call hoga
 
 const Detail = () => {
   const { id } = useParams();
   const result = useQuery(["details", id], ftechPet); //  (useQuery 2 chiz input leta he) 1- ARRAY me (API) ki information leta he 2- ye wo function leta he jis me ham phele array ki information pass karte hn
+  console.log("Response API Result", result);
 
   if (result.isLoading) {
     return (
