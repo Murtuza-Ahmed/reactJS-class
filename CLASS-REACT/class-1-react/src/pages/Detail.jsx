@@ -1,14 +1,16 @@
-import React from "react";
-import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { React, useState, useContext } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query"; //  useQuery jis ki madad se API call hoga
 import ftechPet from "../utils/fetchPet"; //  yaha se API call hoga
 import Carousel from "../components/Carousel";
 import ErrorBoundry from "../components/ErrorBoundry";
 import Modal from "../components/Modal";
+import AdoptedPetContext from "../utils/AdoptedPetContext";
 
 const Detail = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
+  const [setAdoptedPet] = useContext(AdoptedPetContext);
   const [showModal, setShowModal] = useState(false);
   const result = useQuery(["details", id], ftechPet); //  (useQuery 2 chiz input leta he) 1- ARRAY me (API) ki information leta he 2- ye wo function leta he jis me ham phele array ki information pass karte hn
   // console.log("Response API Result", result);
@@ -38,7 +40,9 @@ const Detail = () => {
                 <div>
                   <h1>Would you like to adopt {pet.name}?</h1>
                   <div className="buttons">
-                    <button>Yes</button>
+                    <button onClick={(() => setAdoptedPet(pet), navigate("/"))}>
+                      Yes
+                    </button>
                     <button onClick={() => setShowModal(false)}>No</button>
                   </div>
                 </div>
