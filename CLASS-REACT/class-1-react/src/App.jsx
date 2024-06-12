@@ -1,11 +1,11 @@
 import React from "react";
-import { StrictMode } from "react";
+
 // import { render } from "react-dom";
-import { createRoot } from "react-dom/client";
+
 import { BrowserRouter, Routes, Route, Link, Form } from "react-router-dom";
 // import Pet from "./Pet";
-import SearchParams from "./SearchParams";
-import Detail from "./Detail";
+import SearchParams from "./components/SearchParams";
+import Detail from "./pages/Detail";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const queryClient = new QueryClient();
@@ -33,17 +33,4 @@ const App = () => {
   );
 };
 
-const container = document.getElementById("root");
-const root = createRoot(container);
-root.render(
-  <StrictMode>
-    <App />
-  </StrictMode>
-);
-
-// render(
-//   <StrictMode>
-//     <App />
-//   </StrictMode>,
-//   document.getElementById("root")
-// );
+export default App;

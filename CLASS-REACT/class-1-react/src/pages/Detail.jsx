@@ -1,9 +1,9 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query"; //  useQuery jis ki madad se API call hoga
-import ftechPet from "./fetchPet"; //  yaha se API call hoga
-import Carousel from "./Carousel";
-import ErrorBoundry from "./ErrorBoundry";
+import ftechPet from "../utils/fetchPet"; //  yaha se API call hoga
+import Carousel from "../components/Carousel";
+import ErrorBoundry from "../components/ErrorBoundry";
 
 const Detail = () => {
   const { id } = useParams();
