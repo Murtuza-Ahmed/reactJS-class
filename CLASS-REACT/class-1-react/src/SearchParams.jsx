@@ -112,74 +112,85 @@ export default SearchParams;
 
 // import { useQuery } from "@tanstack/react-query";
 // import fetchSearch from "./fetchSearch";
-// import { useState } from "react";
-// import Pet from "./Pet";
+// // import Pet from "./Pet";
 // import useBreedList from "./useBreedList";
 // import Results from "./Results";
-
+// import { useState } from "react";
 // const ANIMALS = ["bird", "cat", "dog", "rabbit", "reptile"];
 
 // const SearchParams = () => {
+//   const [animal, setAnimal] = useState("");
+
+//   // const [pets, setPets] = useState([]);
+//   const [breeds] = useBreedList(animal);
 //   const [requestParams, setRequestParams] = useState({
 //     location: "",
 //     animal: "",
-//     breed: "",
+//     breeds: "",
 //   });
-
+//   console.log("REAQUESTPARAMS", requestParams);
 //   const result = useQuery(["search", requestParams], fetchSearch);
-//   // console.log(result);
+//   console.log("RESULT", result);
 //   const pet = result?.data?.pets ?? [];
-//   // console.log(pet)
-//   const [breeds] = useBreedList(animal);
+//   console.log("PET", pet);
 
-//   const handleSunmit = (e) => {
+//   const handleSubmit = (e) => {
 //     e.preventDefault();
-//     const formData = new FormData(e.target.value);
+//     const formData = new FormData(e.target);
 //     const obj = {
-//       animal: formData.get("animal") ?? "",
 //       location: formData.get("location") ?? "",
-//       breed: formData.get("breed") ?? "",
+//       animal: formData.get("animal") ?? "",
+//       breeds: formData.get("breed") ?? "",
 //     };
 //     setRequestParams(obj);
 //   };
 
 //   return (
-//     <>
-//       <div className="search-params">
-//         <form onSubmit={handleSunmit}>
-//           {/* LOCATION */}
-//           <label htmlFor="location">
-//             Location
-//             <input id="location" name="location" />
-//           </label>
-//           {/* ANIMALS */}
-//           <label htmlFor="animal">
-//             Animal
-//             <select id="animal" name="animal">
-//               {/* <option /> */}
-//               {ANIMALS.map((animal) => (
-//                 <option key={animal} value={animal}>
-//                   {animal}
-//                 </option>
-//               ))}
-//             </select>
-//           </label>
-//           {/* BREEDS */}
-//           <label htmlFor="breed">
-//             Breed
-//             <select id="breed" name="breed">
-//               <option />
-//               {breeds.map((breed) => (
-//                 <option key={breed} value={breed}>
-//                   {breed}
-//                 </option>
-//               ))}
-//             </select>
-//           </label>
-//           <button>Submit</button>
-//         </form>
-//       </div>
-//     </>
+//     <div className="search-params">
+//       <form onSubmit={handleSubmit}>
+//         {/* LOCATION */}
+//         <label htmlFor="location">
+//           Location
+//           <input id="location" placeholder="Location" name="location" />
+//         </label>
+//         {/* ANIMALS */}
+//         <label htmlFor="animal">
+//           Animal
+//           <select
+//             id="animal"
+//             value={animal}
+//             name="animal"
+//             onChange={(e) => {
+//               setAnimal(e.target.value);
+//             }}
+//             onBlur={(e) => {
+//               setAnimal(e.target.value);
+//             }}
+//           >
+//             {/* <option /> */}
+//             {ANIMALS.map((animal) => (
+//               <option key={animal} value={animal}>
+//                 {animal}
+//               </option>
+//             ))}
+//           </select>
+//         </label>
+//         {/* BREEDS */}
+//         <label htmlFor="breed">
+//           Breed
+//           <select disabled={!breeds.length} id="breed" name="breed">
+//             <option />
+//             {breeds.map((breed) => (
+//               <option key={breed} value={breed}>
+//                 {breed}
+//               </option>
+//             ))}
+//           </select>
+//         </label>
+//         <button>Submit</button>
+//       </form>
+//       <Results pets={pet} />
+//     </div>
 //   );
 // };
 

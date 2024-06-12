@@ -1,6 +1,6 @@
 const fetchBreedList = async ({ queryKey }) => {
 
-    console.log("ANIMAL BREED", queryKey)
+    // console.log("ANIMAL BREED", queryKey)
 
     const animal = queryKey[1];
     if (!animal) return []
