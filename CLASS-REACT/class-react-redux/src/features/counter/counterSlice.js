@@ -23,6 +23,9 @@ export const counterSlice = createSlice({
         incrementByAmount: (state, action) => {
             state.value += parseInt(action.payload)
         },
+        decrementByAmount: (state, action) => {
+            state.value -= parseInt(action.payload)
+        },
     }
 });
 
@@ -31,7 +34,7 @@ export const counterSlice = createSlice({
  * todo explicity export function from the slice so that we can use in component
  */
 
-export const { increment, decrement, incrementByAmount } = counterSlice.actions
+export const { increment, decrement, incrementByAmount, decrementByAmount } = counterSlice.actions
 
 /**
  * step 3: export the reducer

@@ -5,14 +5,19 @@
 
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { decrement, increment, incrementByAmount } from "./counterSlice";
+import {
+  decrement,
+  increment,
+  incrementByAmount,
+  decrementByAmount,
+} from "./counterSlice";
 
 export default function Counter() {
   const count = useSelector((state) => state.counter.value);
   const dispatch = useDispatch();
   // console.log(count);
-  const [inputField, setInputField] = useState();
-  console.log(inputField);
+  const [inputField, setInputField] = useState(0);
+  // console.log(inputField);
   return (
     <div>
       <div>
@@ -29,7 +34,9 @@ export default function Counter() {
         {/* DECREMENT */}
         <button
           aria-label="Decrement value"
-          onClick={() => dispatch(decrement())}
+          onClick={() =>
+            count === 0 ? alert("Less Then is 0") : dispatch(decrement())
+          }
         >
           Decrement
         </button>
@@ -44,9 +51,28 @@ export default function Counter() {
 
         <button
           aria-label="Increment Amount Value"
-          onClick={() => dispatch(incrementByAmount(inputField))}
+          onClick={() => {
+            if (count === 100) {
+              alert("Grather Then is 100");
+            } else {
+              dispatch(incrementByAmount(inputField));
+            }
+          }}
         >
           Increment Amount
+        </button>
+        {/* DECREMENT AMOUNT */}
+        <button
+          aria-label="Decrement Amount Value"
+          onClick={() => {
+            if (count === 0) {
+              alert("Less Then is 0");
+            } else {
+              dispatch(decrementByAmount(inputField));
+            }
+          }}
+        >
+          Decrement Amount
         </button>
       </div>
     </div>
