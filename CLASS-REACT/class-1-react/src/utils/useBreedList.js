@@ -39,10 +39,10 @@ import { useQuery } from "@tanstack/react-query";
 import fetchBreedList from "./fetchBreedList";
 
 const useBreedList = (animal) => {
-    const result = useQuery(["breeds", animal], fetchBreedList)
+  const result = useQuery(["breeds", animal], fetchBreedList);
 
-    // console.log("BREED_RESULT", result)
-    return [result?.data?.breeds ?? [], result.status]
-}
+  // console.log("BREED_RESULT", result)
+  return [result?.data?.breeds ?? [], result.status];
+};
 
-export default useBreedList
+export default useBreedList;
